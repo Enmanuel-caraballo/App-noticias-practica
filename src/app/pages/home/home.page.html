@@ -1,0 +1,9 @@
+<ion-content [fullscreen]="true">
+ @for (item of users; track $index) {
+  <ion-card (click) ="goToDetail(item.uuid)">
+    <ion-card-content>
+      {{item.name}} -- {{item.lastName}}
+    </ion-card-content>
+  </ion-card>
+ }
+</ion-content>

@@ -1,0 +1,82 @@
+<ion-content [fullscreen]="true">
+
+  <form [formGroup]="registerForm" (ngSubmit)="doRegister();">
+
+<ion-card>
+  <ion-card-content>
+    <ion-row>
+      <ion-col>
+        <app-input
+        type="text"
+        label="Name"
+        placeholder="Escribe tu nombre"
+        [control]="name"
+>
+        </app-input>
+      </ion-col>
+    </ion-row>
+
+     <ion-row>
+      <ion-col>
+        <app-input
+        type="text"
+        label="Last Name"
+        placeholder="Ingrese su apellido"
+        [control]="lastName"
+>
+        </app-input>
+      </ion-col>
+    </ion-row>
+     <ion-row>
+      <ion-col>
+        <app-input
+        type="email"
+        label="Email"
+        placeholder="valeria@gmail.com"
+        [control]="email"
+>
+        </app-input>
+      </ion-col>
+    </ion-row>
+     <ion-row>
+      <ion-col>
+        <app-input
+        type="password"
+        label="Password"
+        placeholder="***************"
+        [control]="password"
+> 
+      </app-input>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label>Seleccione rol de usuario</ion-label>
+          <app-select placeholder="Opciones"
+          [control]="rol"
+          >
+
+          </app-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    
+
+    <ion-row>
+      <ion-col>
+        <app-button
+         type="submit"
+          color="primary"
+          value="Registrar"
+          [disabled]="registerForm.invalid"
+        ></app-button>
+      </ion-col>
+    </ion-row>
+  </ion-card-content>
+</ion-card>
+
+</form>
+</ion-content>

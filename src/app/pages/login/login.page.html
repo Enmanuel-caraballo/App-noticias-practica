@@ -1,0 +1,50 @@
+<ion-content [fullscreen]="true">
+
+  <form [formGroup]="loginForm" (ngSubmit)="onLogin();">
+
+<ion-card>
+  <ion-card-content>
+    <ion-row>
+      <ion-col>
+        <app-input
+        type="email"
+        label="email"
+        placeholder="valeria@gmail.com"
+        [control]="email">
+        </app-input>
+      </ion-col>
+    </ion-row>
+
+     <ion-row>
+      <ion-col>
+        <app-input
+        type="password"
+        label="password"
+        placeholder="***************"
+        [control]="password">
+        </app-input>
+      </ion-col>
+    </ion-row>
+
+
+
+    <ion-row>
+
+     <ion-row>
+      <a [routerLink]="['/register']">Register</a>
+    </ion-row>
+    
+      <ion-col>
+        <app-button
+         type="submit"
+          color="primary"
+        [disabled]="loginForm.invalid"
+        value="Login"
+        ></app-button>
+      </ion-col>
+    </ion-row>
+  </ion-card-content>
+</ion-card>
+
+</form>
+</ion-content>
