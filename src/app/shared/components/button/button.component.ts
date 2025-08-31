@@ -16,4 +16,14 @@ export class ButtonComponent  implements OnInit {
 
   ngOnInit() {}
 
+  /*    this.countriesService.getCountries().subscribe({
+      next: (response) =>{
+        this.countries = response.data;
+      },
+      error: (err) =>{
+        console.error('Error al cargar los paises')
+      }
+    });
+     constructor(private countriesService: CountriesService) {}
+       countries: any[] = [];*/
 }

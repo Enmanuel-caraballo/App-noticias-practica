@@ -1,8 +1,10 @@
 <ion-select 
 [placeholder]="placeholder" 
 class="border_blue" 
-(ionChange) ='onSelect($event)'>
-  <ion-select-option value="estudiante">Estudiante</ion-select-option>
-  <ion-select-option value="profesor">Profesor</ion-select-option>
-  <ion-select-option value="admin">Administrador</ion-select-option>
+(ionChange)="onSelect($event)"
+>
+  <ion-select-option *ngFor="let country of countries$ | async" [value]="country.name">
+    {{country.name}}  {{country.unicodeFlag}}
+  </ion-select-option>
+
 </ion-select>

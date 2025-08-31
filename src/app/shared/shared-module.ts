@@ -7,6 +7,7 @@ import { ButtonComponent } from './components/button/button.component';
 import { StorageService } from './services/storage';
 import { SelectComponent } from './components/select/select.component';
 
+
 const modules = [IonicModule, ReactiveFormsModule, FormsModule];
 const components = [InputComponent, ButtonComponent, SelectComponent];
 @NgModule({

@@ -17,7 +17,7 @@ export class RegisterPage implements OnInit {
   public lastName!: FormControl;
   public email!: FormControl;
   public password!: FormControl;
-  public rol!: FormControl;
+  public country!: FormControl;
   public registerForm!: FormGroup;
 
   constructor(private readonly storageSrv: StorageService, private readonly router: Router) {
@@ -59,14 +59,14 @@ export class RegisterPage implements OnInit {
     this.lastName = new FormControl('', [Validators.required]);
     this.email = new FormControl('', [Validators.required, Validators.email]);
     this.password = new FormControl('', [Validators.required]);
-    this.rol = new FormControl('', [Validators.required]);
+    this.country = new FormControl('', [Validators.required]);
 
     this.registerForm = new FormGroup({
       name: this.name,
       lastName: this.lastName,
       email: this.email,
       password: this.password,
-      rol: this.rol,
+      country: this.country,
     });
    }
 
