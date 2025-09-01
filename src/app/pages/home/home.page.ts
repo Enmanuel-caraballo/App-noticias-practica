@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { INews } from 'src/app/interfaces/news.interface';
 import { IUser } from 'src/app/interfaces/user.interface';
+import { Http } from 'src/app/shared/services/http/http';
+import { NewsService } from 'src/app/shared/services/news-service';
 import { StorageService } from 'src/app/shared/services/storage';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-home',
@@ -11,18 +15,31 @@ import { StorageService } from 'src/app/shared/services/storage';
 })
 export class HomePage implements OnInit {
   public users: IUser[] = [];
-  constructor(private readonly storageSrv: StorageService, private readonly router: Router) { }
+  public news: INews[] = [];
+  constructor(
+    private readonly newsService: NewsService, 
+    private readonly router: Router,
+     private httpSrv: Http) { }
 
-  ngOnInit() {
+  async ngOnInit(){
 
-    this.users = this.storageSrv.get('users') || [];
+   // this.news = await this.httpSrv.get<INews[]>(environment.BASE_URL);
+    
 
-    console.log(this.users);
-  }
+    this.newsService.getEverything('sports').subscribe(data => {
+  console.log(data);
+   });
 
-  public goToDetail(id: IUser['uuid']){
+  this.newsService.getTopHeadlines('us').subscribe(data => {
+  console.log(data);
+  });
+}
+
+  
+
+  /*public goToDetail(id: IUser['uuid']){
     this.router.navigate(['/detail', id])
 
-  }
+  }*/
 
 }

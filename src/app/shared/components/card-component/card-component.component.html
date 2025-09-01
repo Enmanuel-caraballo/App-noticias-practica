@@ -1,11 +1,13 @@
+  @for (item of news; track $index) {
 <ion-card>
-  <img *ngIf="image" [src]="image" [alt]="title || 'card image'" />
+  <img [alt]="item.subTitle" [src]="item.urlToImage" />
   <ion-card-header>
-    <ion-card-title>{{title}}</ion-card-title>
-    <ion-card-subtitle>{{subTitle}}</ion-card-subtitle>
+    <ion-card-title>{{item.title}}</ion-card-title>
+    <ion-card-subtitle>{{item.subTitle}}</ion-card-subtitle>
   </ion-card-header>
 
   <ion-card-content>
-    {{content}}
+    {{item.description}}
   </ion-card-content>
 </ion-card>
+}
