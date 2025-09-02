@@ -10,11 +10,14 @@ import { CardComponentComponent } from './components/card-component/card-compone
 import { NewsService } from './services/news-service';
 import { HeaderComponent } from './components/header/header.component';
 import { LateralMenuComponent } from './components/lateral-menu/lateral-menu.component';
+import { ListComponent } from './components/list/list.component';
 
 
 
 const modules = [IonicModule, ReactiveFormsModule, FormsModule];
-const components = [InputComponent, ButtonComponent, SelectComponent, CardComponentComponent, HeaderComponent, LateralMenuComponent];
+const components = [InputComponent,
+   ButtonComponent, SelectComponent, 
+   CardComponentComponent, HeaderComponent, LateralMenuComponent, ListComponent];
 @NgModule({
   declarations: [components],
   providers: [StorageService, NewsService,],

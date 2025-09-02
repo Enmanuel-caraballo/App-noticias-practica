@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { INews } from 'src/app/interfaces/news.interface';
 import { IUser } from 'src/app/interfaces/user.interface';
@@ -13,6 +14,7 @@ import { NewsService } from 'src/app/shared/services/news-service';
   standalone: false,
 })
 export class HomePage implements OnInit {
+  
   public users: IUser[] = [];
   public news: INews[] = [];
   constructor(
@@ -20,7 +22,13 @@ export class HomePage implements OnInit {
     private readonly router: Router,
      ) { }
 
+ public registSelection(){
+
+ }
+
   async ngOnInit(){
+
+
 
    // this.news = await this.httpSrv.get<INews[]>(environment.BASE_URL);
     

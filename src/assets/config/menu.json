@@ -1,0 +1,31 @@
+
+[
+    {
+        "title": "Bussines",
+        "value": "bussines"
+    },
+    {
+        "title": "Entertaiment",
+        "value": "entertaiment"
+    },
+    {
+        "title": "General",
+        "value": "general"
+    },
+    {
+        "title": "Health",
+        "value": "health"
+    },
+    {
+        "title": "Science",
+        "value": "science"
+    },
+    {
+        "title": "Sports",
+        "value": "sports"
+    },
+    {
+        "title": "Technology",
+        "value": "technology"
+    }
+]

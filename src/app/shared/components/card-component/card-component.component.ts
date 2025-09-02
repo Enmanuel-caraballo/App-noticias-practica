@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { INews } from 'src/app/interfaces/news.interface';
 import { environment } from 'src/environments/environment';
 import { NewsService } from '../../services/news-service';
+import { CategoryService } from '../../services/category-service';
 
 
 @Component({
@@ -21,13 +22,19 @@ export class CardComponentComponent  implements OnInit {
   
   
   constructor(
-    private readonly newsSrv: NewsService
+    private readonly newsSrv: NewsService,
+    private readonly categorySrv: CategoryService,
   ) {}
    ngOnInit(){
-    this.newsSrv.getEverything('sport').subscribe((response: any) => {
-    this.news = response.articles;
 
-      });  
+
+  this.categorySrv.selectedCategory$.subscribe((category: string) => {
+    this.newsSrv.getEverything(category).subscribe((response: any) => {
+      this.news = response.articles;
+    });
+  });
+
+    
   }
 
 }
