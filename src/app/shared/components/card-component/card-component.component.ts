@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Http } from '../../services/http/http';
 import { INews } from 'src/app/interfaces/news.interface';
 import { environment } from 'src/environments/environment';
 import { NewsService } from '../../services/news-service';
@@ -21,11 +20,11 @@ export class CardComponentComponent  implements OnInit {
 
   
   
-  constructor(private readonly httpSrv: Http,
+  constructor(
     private readonly newsSrv: NewsService
   ) {}
-  async ngOnInit(){
-    this.newsSrv.getEverything('sports').subscribe((response: any) => {
+   ngOnInit(){
+    this.newsSrv.getEverything('sport').subscribe((response: any) => {
     this.news = response.articles;
 
       });  

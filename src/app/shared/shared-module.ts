@@ -8,14 +8,16 @@ import { StorageService } from './services/storage';
 import { SelectComponent } from './components/select/select.component';
 import { CardComponentComponent } from './components/card-component/card-component.component';
 import { NewsService } from './services/news-service';
-import { Http } from './services/http/http';
+import { HeaderComponent } from './components/header/header.component';
+import { LateralMenuComponent } from './components/lateral-menu/lateral-menu.component';
+
 
 
 const modules = [IonicModule, ReactiveFormsModule, FormsModule];
-const components = [InputComponent, ButtonComponent, SelectComponent, CardComponentComponent];
+const components = [InputComponent, ButtonComponent, SelectComponent, CardComponentComponent, HeaderComponent, LateralMenuComponent];
 @NgModule({
   declarations: [components],
-  providers: [StorageService, NewsService, Http],
+  providers: [StorageService, NewsService,],
   imports: [
     CommonModule, modules
   ],

@@ -2,10 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { INews } from 'src/app/interfaces/news.interface';
 import { IUser } from 'src/app/interfaces/user.interface';
-import { Http } from 'src/app/shared/services/http/http';
+
 import { NewsService } from 'src/app/shared/services/news-service';
-import { StorageService } from 'src/app/shared/services/storage';
-import { environment } from 'src/environments/environment';
+
 
 @Component({
   selector: 'app-home',
@@ -19,7 +18,7 @@ export class HomePage implements OnInit {
   constructor(
     private readonly newsService: NewsService, 
     private readonly router: Router,
-     private httpSrv: Http) { }
+     ) { }
 
   async ngOnInit(){
 
