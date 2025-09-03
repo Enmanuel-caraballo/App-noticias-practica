@@ -28,9 +28,14 @@ export class CardComponentComponent  implements OnInit {
 
 
   this.categorySrv.selectedCategory$.subscribe((category: string) => {
-    if(category === ''){
+    
+    if(!category){
       category = 'sports';
+      this.newsSrv.getEverything(category).subscribe((response: any) => {
+      this.news = response.articles;
+    });
     }
+
     this.newsSrv.getEverything(category).subscribe((response: any) => {
       this.news = response.articles;
     });
