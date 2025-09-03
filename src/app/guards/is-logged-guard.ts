@@ -7,12 +7,23 @@ export const isLoggedGuard: CanActivateFn = (route, state) => {
 
    const storageSrv = inject(StorageService);
   const router = inject(Router);
-
   const auth = storageSrv.get<{uuid: string}>(CONSTANTS.AUTH);
 
+  const url = state.url;
+  const publicUrl = ['/', '/login', '/register'];
+
+  if(url === '/login' && !auth){
+    return true;
+  }
+
+  if(!auth && publicUrl.includes(url)){
+
+    return true;
+  }
   if(router.url === '/' && !auth){
     return true;
   }
+    
   router.navigate(['/home']);
   return false;
 /*  const auth = storageSrv.get<{uuid: string}>("AUTH");

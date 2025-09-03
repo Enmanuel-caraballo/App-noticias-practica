@@ -28,7 +28,7 @@ export class LoginPage implements OnInit {
   ngOnInit() {}
 
   public async onLogin(){
-    console.log(this.loginForm.value)
+    //console.log(this.loginForm.value)
 
     const users = this.storageSrv.get<IUser[]>(CONSTANTS.USER) || [];
 

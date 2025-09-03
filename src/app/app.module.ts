@@ -9,7 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared-module';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
-import { authInterceptor } from './interceptors/auth-interceptor';
+
 
 @NgModule({
   declarations: [AppComponent],

@@ -12,16 +12,12 @@ const routes: Routes = [
   {
     path: 'register',
     loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule),
-    
+    canActivate: [isLoggedGuard]
   },
   {
     path: 'home',
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule),
     canActivate: [authGuard],
-  },
-  {
-    path: 'detail/:uuid',
-    loadChildren: () => import('./pages/detail/detail.module').then( m => m.DetailPageModule)
   },
   {
     path: '**',
