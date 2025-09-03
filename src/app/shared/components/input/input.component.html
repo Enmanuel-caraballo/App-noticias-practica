@@ -5,4 +5,12 @@
         [placeholder]="placeholder"
         labelPlacement="floating"
         (keyup) ='onType($event);'
-></ion-input>
+>
+@if (type ==='password') {
+<ion-input-password-toggle slot="end"></ion-input-password-toggle>
+}
+</ion-input>
+
+@if(hasError){
+      <ion-text>The input is required</ion-text>
+}

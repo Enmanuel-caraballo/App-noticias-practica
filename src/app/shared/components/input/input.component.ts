@@ -12,12 +12,24 @@ export class InputComponent  implements OnInit {
   @Input() label: string = '';
   @Input() placeholder: string = '';
   @Input() control: FormControl = new FormControl();
+
+  public hasError = false;
   constructor() {}
 
   ngOnInit() {}
 
   public onType(event: any){
+
+      if(this.control.errors){
+        this.hasError = true;
+      }else{
+        this.hasError = false;
+      }
+
        this.control.setValue(event.target.value);
+
+       
+       
   }
 
 }
