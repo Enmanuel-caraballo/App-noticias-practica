@@ -1,8 +1,8 @@
-<ion-content [fullscreen]="true">
+<ion-content class="login-container">
 
-  <form [formGroup]="loginForm" (ngSubmit)="onLogin();">
+  <form [formGroup]="loginForm" (ngSubmit)="onLogin();" class="form">
 
-<ion-card>
+<ion-card >
   <ion-card-content>
     <ion-row>
       <ion-col>
@@ -30,11 +30,11 @@
 
     <ion-row>
 
-     <ion-row>
+     <ion-row class="aContent">
       <a [routerLink]="['/register']">Register</a>
     </ion-row>
     
-      <ion-col>
+      <ion-col class="button-container">
         <app-button
          type="submit"
           color="primary"

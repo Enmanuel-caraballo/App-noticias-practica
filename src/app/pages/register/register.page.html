@@ -1,6 +1,6 @@
 <ion-content [fullscreen]="true">
 
-  <form [formGroup]="registerForm" (ngSubmit)="doRegister();">
+  <form [formGroup]="registerForm" (ngSubmit)="doRegister();" class="form">
 
 <ion-card>
   <ion-card-content>
@@ -51,7 +51,7 @@
     </ion-row>
 
     <ion-row>
-      <ion-col>
+      <ion-col class="container-select">
         <ion-item>
           <ion-label>Seleccione su pais</ion-label>
           <app-select placeholder="Opciones"
@@ -66,10 +66,10 @@
     
 
     <ion-row>
-      <ion-col>
+      <ion-col class="aContent">
         <a [routerLink]="['/login']">Login</a>
       </ion-col>
-      <ion-col>
+      <ion-col class="button-container">
         <app-button
          type="submit"
           color="primary"
