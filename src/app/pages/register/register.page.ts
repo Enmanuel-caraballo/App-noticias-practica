@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CONSTANTS } from 'src/app/constants/constants';
 import { IUser } from 'src/app/interfaces/user.interface';
 import { StorageService } from 'src/app/shared/services/storage';
 import { v4 } from 'uuid';
@@ -44,7 +45,7 @@ export class RegisterPage implements OnInit {
       ...this.registerForm.value
   });
 
-    this.storageSrv.set("users", users);
+    this.storageSrv.set(CONSTANTS.USER, users);
     this.registerForm.reset();
     this.router.navigate(['/'])
     

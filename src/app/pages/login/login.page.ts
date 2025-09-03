@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CONSTANTS } from 'src/app/constants/constants';
 import { IUser } from 'src/app/interfaces/user.interface';
 import { StorageService } from 'src/app/shared/services/storage';
+import { Toast } from 'src/app/shared/services/toast/toast';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +17,9 @@ export class LoginPage implements OnInit {
   public password!: FormControl;
   public loginForm!: FormGroup;
 
-  constructor(private readonly storageSrv: StorageService, private readonly router: Router) {
+  constructor(private readonly storageSrv: StorageService,
+     private readonly router: Router,
+    private readonly toastSrv: Toast) {
     this.initForm();
 
     
@@ -23,19 +27,36 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {}
 
-  public onLogin(){
+  public async onLogin(){
     console.log(this.loginForm.value)
 
-    const users = this.storageSrv.get<IUser[]>('users') || [];
+    const users = this.storageSrv.get<IUser[]>(CONSTANTS.USER) || [];
 
     const user = users.find( u => u.email === this.email.value);
 
-    if(!user) throw new Error('El usuario no existe')
+    if(!user) {
+      await this.toastSrv.present({
+        mesage: "User dont exist",
+        color: "danger",
+        position: "bottom",
+      });
+      return;
+    }
       const isValidPassword = user.password === this.password.value;
       
-      if(isValidPassword) return this.router.navigate(['/home']);
+      if(isValidPassword) {
+        this.storageSrv.set( CONSTANTS.AUTH , {
+          uuid: user.uuid,
+        });
+        return this.router.navigate(['/home']);
+      }
 
-      throw new Error('La contraseña no coincide');
+     await this.toastSrv.present({
+      mesage: "Password missmatch",
+      color: "danger",
+      position: 'bottom',
+     });
+     return;
       
   }
 
