@@ -33,13 +33,13 @@ export class HomePage implements OnInit {
    // this.news = await this.httpSrv.get<INews[]>(environment.BASE_URL);
     
 
-    this.newsService.getEverything('sports').subscribe(data => {
+   /* this.newsService.getEverything('sports').subscribe(data => {
   console.log(data);
    });
 
   this.newsService.getTopHeadlines('us').subscribe(data => {
   console.log(data);
-  });
+  });*/
 }
 
   

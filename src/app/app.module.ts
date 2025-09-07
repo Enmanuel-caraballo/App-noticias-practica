@@ -8,14 +8,15 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared-module';
-import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptors } from '@angular/common/http';
+import { newsInterceptorInterceptor } from './shared/interceptors/news-interceptor-interceptor';
 
 
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, ReactiveFormsModule, SharedModule ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy, },
-    provideHttpClient(),
+    provideHttpClient(withInterceptors([newsInterceptorInterceptor])),
   ],
   bootstrap: [AppComponent],
 })

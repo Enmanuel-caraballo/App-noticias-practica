@@ -14,23 +14,20 @@ export class NewsService {
 
   //Busca noticias con everithing
   public getEverything(query: string, from?: string){
-    let url = `${this.baseUrl}/everything?q=${query}&apiKey=${this.apiKey}`;
-    if (from) url += `&from=${from}`;
 
-    return this.http.get(url);
+    return this.http.get(`everything?q=${query}&apiKey=${this.apiKey}`)
   }
 
   //Noticias principales
   getTopHeadlines(country: string = 'us'){
-    const url = `${this.baseUrl}/top-headlines?country=${country}&apiKey=${this.apiKey}`;
-    return this.http.get(url);
+     return this.http.get(`top-headlines?country=${country}&apiKey=${this.apiKey}`);
   }
 
   
-    getSources() {
+   /* getSources() {
     const url = `${this.baseUrl}/sources?apiKey=${this.apiKey}`;
     return this.http.get(url);
-  }
+  }*/
 
 
 }

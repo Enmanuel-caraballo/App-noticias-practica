@@ -27,6 +27,8 @@ export class CardComponentComponent  implements OnInit {
    ngOnInit(){
 
 
+
+    
   this.categorySrv.selectedCategory$.subscribe((category: string) => {
     
     if(!category){

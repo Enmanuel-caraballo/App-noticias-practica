@@ -9,8 +9,9 @@ export class Menu {
 
   constructor (private http: HttpClient){}
 
+
   getMenu(): Observable<any>{
-    return this.http.get('../assets/config/menu.json');
+    return this.http.get('../assets/config/menu.json'); 
   }
     }
 
