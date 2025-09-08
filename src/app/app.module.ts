@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
@@ -8,14 +8,19 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared-module';
-import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptors } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { newsInterceptorInterceptor } from './shared/interceptors/news-interceptor-interceptor';
 
 
+
+
 @NgModule({
+  schemas:[CUSTOM_ELEMENTS_SCHEMA],
   declarations: [AppComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, ReactiveFormsModule, SharedModule ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy, },
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy,
+
+   },
     provideHttpClient(withInterceptors([newsInterceptorInterceptor])),
   ],
   bootstrap: [AppComponent],

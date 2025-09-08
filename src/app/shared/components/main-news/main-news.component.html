@@ -1,0 +1,11 @@
+<swiper-container  loop="true"  >
+<swiper-slide *ngFor="let item of news">
+<ion-card class="cart-component" >
+
+  <img [alt]="item.subTitle" [src]="item.urlToImage" />
+  <ion-card-header>
+    <ion-card-title>{{item.title}}</ion-card-title>
+  </ion-card-header>
+</ion-card>
+</swiper-slide>
+</swiper-container>
