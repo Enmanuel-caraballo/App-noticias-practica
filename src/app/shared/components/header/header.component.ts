@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CategoryService } from '../../services/category-service';
-import { NewsService } from '../../services/news-service';
+
 
 @Component({
   selector: 'app-header',
@@ -11,10 +11,13 @@ import { NewsService } from '../../services/news-service';
 export class HeaderComponent  implements OnInit {
   @Input() title: string = '';
   title2: string = '';
-  constructor(private categorySrv: CategoryService, private newsSrv: NewsService) { }
+  constructor(private categorySrv: CategoryService, ) { }
 
   ngOnInit() {
       this.categorySrv.selectedCategory$.subscribe((category: string) => {
+        /*if (category == '') {
+          this.title2 = 'App';
+        }*/
           this.title2 = category;
   });
   }

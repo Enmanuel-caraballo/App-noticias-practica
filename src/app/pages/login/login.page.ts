@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CONSTANTS } from 'src/app/constants/constants';
 import { IUser } from 'src/app/interfaces/user.interface';
+import { Encrypt } from 'src/app/shared/services/encrypt';
 import { StorageService } from 'src/app/shared/services/storage';
 import { Toast } from 'src/app/shared/services/toast/toast';
 
@@ -18,7 +19,7 @@ export class LoginPage implements OnInit {
   public loginForm!: FormGroup;
 
   constructor(private readonly storageSrv: StorageService,
-     private readonly router: Router,
+     private readonly router: Router,private readonly cryptSrv: Encrypt,
     private readonly toastSrv: Toast) {
     this.initForm();
 
@@ -42,7 +43,7 @@ export class LoginPage implements OnInit {
       });
       return;
     }
-      const isValidPassword = user.password === this.password.value;
+      const isValidPassword = this.cryptSrv.deCrypt(user.password) === this.password.value;
       
       if(isValidPassword) {
         this.storageSrv.set( CONSTANTS.AUTH , {

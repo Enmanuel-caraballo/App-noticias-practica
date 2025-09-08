@@ -1,7 +1,9 @@
 <swiper-container  loop="true"  >
 <swiper-slide *ngFor="let item of news">
 <ion-card class="cart-component" >
-
+<ion-title style="text-align: center;">
+Trending news
+</ion-title>
   <img [alt]="item.subTitle" [src]="item.urlToImage" />
   <ion-card-header>
     <ion-card-title>{{item.title}}</ion-card-title>

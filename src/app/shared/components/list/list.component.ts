@@ -27,8 +27,7 @@ export class ListComponent  implements OnInit {
       this.menu = data;
     });
 }
-
-  
+ 
 
  public onItemClick(item: any){
   

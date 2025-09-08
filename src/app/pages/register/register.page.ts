@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CONSTANTS } from 'src/app/constants/constants';
 import { IUser } from 'src/app/interfaces/user.interface';
+import { Encrypt } from 'src/app/shared/services/encrypt';
 import { StorageService } from 'src/app/shared/services/storage';
 import { v4 } from 'uuid';
 
@@ -21,16 +22,22 @@ export class RegisterPage implements OnInit {
   public country!: FormControl;
   public registerForm!: FormGroup;
 
-  constructor(private readonly storageSrv: StorageService, private readonly router: Router) {
+  constructor(private readonly storageSrv: StorageService,
+     private readonly router: Router, private readonly cryptSrv: Encrypt) {
     this.initForm();
  }
 
   ngOnInit() {}
 
+  
   public doRegister(){
+
+
+
     console.log(this.registerForm.value);
     let users = this.storageSrv.get<IUser[]>("users")
-    
+          
+
     if(!users){
       users = [];
     }
@@ -40,11 +47,14 @@ export class RegisterPage implements OnInit {
     if(exist){
       throw new Error('El correo ya existe')
     }
+
+  const encryptedPass = this.cryptSrv.encrypt(this.password.value);
+
     users.push({
       uuid: v4(),
-      ...this.registerForm.value
+      ...this.registerForm.value,
+      password: encryptedPass,
   });
-
     this.storageSrv.set(CONSTANTS.USER, users);
     this.registerForm.reset();
     this.router.navigate(['/'])
@@ -55,7 +65,7 @@ export class RegisterPage implements OnInit {
   
 
    private initForm(){
-
+    
     this.name = new FormControl('', [Validators.required]);
     this.lastName = new FormControl('', [Validators.required]);
     this.email = new FormControl('', [Validators.required, Validators.email]);
@@ -63,12 +73,15 @@ export class RegisterPage implements OnInit {
     this.country = new FormControl('', [Validators.required]);
 
     this.registerForm = new FormGroup({
+      
       name: this.name,
       lastName: this.lastName,
       email: this.email,
       password: this.password,
       country: this.country,
+      
     });
+    this.cryptSrv.encrypt(this.password.value);
    }
 
 
